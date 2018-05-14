@@ -1,1 +1,43 @@
+## access modifier
+- final : 상속과 오버라이딩 불가능
+- open : 상속과 오버라이딩 가능
+- abstract : 반드시 상속과 오버라이딩을 해야 함.
+- override : 오버라이딩 하는 중
 
+## visibility modifier
+- public : 모든 곳에서 접근 가능
+- internal : 모듈(프로젝트 단위) 내에서만 접근 가능(자바와 다름)
+- protected : 이 클래스와 하위 클래스에서만 접근 가능(자바와 다름)
+- private : 이 클래스에서만 접근 가능
+
+## access/visibility modifier의 기본셋
+- class : public, final 
+- inner class : public, final
+- abstract class : public, open
+- interface : public, open
+
+## interface
+- example
+```kotlin
+interface Clickable {
+fun click()
+fun show() = println("Clickable")
+}
+interface Focusable {
+fun click()
+fun show() = println("Focusable")
+}
+class Button : Clickable, Focusable {
+override fun click() = println("Click")
+override fun show() { 
+super<Clickable>.show();
+super<Focusable>.show();
+}
+}
+fun main(args: Array<String>) {
+Button().click()
+Button().showOff()
+}
+```
+- 중복 디폴트 메소드는 반드시 오버라이딩해야 한다.
+- 코틀린의 디폴트 메소드는 자바에서 사용할 수 없다.
